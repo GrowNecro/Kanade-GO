@@ -1,0 +1,9 @@
+# File konfigurasi environment
+.env
+
+# Folder data
+data/
+
+# File command yang diabaikan
+commands/cuaca_BMKG.go
+commands/weather.go
