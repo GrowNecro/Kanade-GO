@@ -37,8 +37,8 @@ func IngfoCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	// Menambahkan reaction untuk menunjukkan proses sedang berjalan
-	if err := s.MessageReactionAdd(m.ChannelID, m.ID, "🔄"); err != nil {
-		fmt.Println("Gagal menambahkan reaction 🔄:", err)
+	if err := s.MessageReactionAdd(m.ChannelID, m.ID, "⌛"); err != nil {
+		fmt.Println("Gagal menambahkan reaction ⌛:", err)
 	}
 
 	// Menyiapkan URL untuk request
@@ -139,9 +139,9 @@ func IngfoCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	// Hapus reaction 🔄 dan tambahkan 👍
-	if err := s.MessageReactionRemove(m.ChannelID, m.ID, "🔄", s.State.User.ID); err != nil {
-		fmt.Println("Gagal hapus reaction 🔄:", err)
+	// Hapus reaction ⌛ dan tambahkan 👍
+	if err := s.MessageReactionRemove(m.ChannelID, m.ID, "⌛", s.State.User.ID); err != nil {
+		fmt.Println("Gagal hapus reaction ⌛:", err)
 	}
 
 	if err := s.MessageReactionAdd(m.ChannelID, m.ID, "👍"); err != nil {
@@ -153,8 +153,8 @@ func IngfoCommand(s *discordgo.Session, m *discordgo.MessageCreate) {
 // Fungsi untuk menambahkan reaction error (❌)
 func handleFailReaction(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// Remove the reaction safely, handling any errors gracefully
-	if err := s.MessageReactionRemove(m.ChannelID, m.ID, "🔄", s.State.User.ID); err != nil {
-		fmt.Println("Gagal hapus reaction 🔄:", err)
+	if err := s.MessageReactionRemove(m.ChannelID, m.ID, "⌛", s.State.User.ID); err != nil {
+		fmt.Println("Gagal hapus reaction ⌛:", err)
 	}
 
 	// Try adding the error reaction (❌)
